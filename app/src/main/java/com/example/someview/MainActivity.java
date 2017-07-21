@@ -1,5 +1,6 @@
 package com.example.someview;
 
+import android.content.Intent;
 import android.os.SystemClock;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
@@ -112,14 +113,36 @@ public class MainActivity extends AppCompatActivity {
    }
    */
 
-   /*生命周期*/
+   final  static  String SOME_ACTION = "com.example.someview.SOME_ACTION";
    @Override
    protected void onCreate(Bundle saveInstanceState)
    {
        super.onCreate(saveInstanceState);
        setContentView(R.layout.activity_main);
        System.out.println("MainActivity onCreate");
+       Button bn1 = (Button) findViewById(R.id.bn1);
+//       第三种时间机制
+       bn1.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               Intent intent = new Intent();
+     /*
+     显式Intent
+               intent.setClass(MainActivity.this, SecondActivity.class);
+     */
+             /*
+             隐式Intent，设置主action的值，若有对应action的值与之相等，则启动它，
+               此action只能指定一个
+            */
+               intent.setAction(MainActivity.SOME_ACTION);
+
+//               传递数据
+               intent.putExtra("com.example.someview",29);
+               startActivity(intent);
+           }
+       });
    }
+    /*生命周期*/
     @Override
     protected void onStart()
     {
@@ -156,4 +179,5 @@ public class MainActivity extends AppCompatActivity {
         super.onRestart();
         System.out.println("MainActivity onRestart");
     }
+
 }

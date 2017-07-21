@@ -16,6 +16,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".SecondActivity"
+            android:label="Second">
+            <intent-filter>
+                <!--指定该Activity可以响应Action值是指定字符串的Intent，该action可以设置多个
+                只要是主aciton的值在这里匹配了，都可以被启动-->
+                <action android:name="com.example.someview.SOME_ACTION"></action>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ThirdActivity"
+            android:label="Third">
+            <intent-filter>
+                <action android:name="com.example.someview.SOME_ACTION"></action>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

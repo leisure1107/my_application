@@ -42,7 +42,7 @@ public class SecondActivity extends AppCompatActivity {
             startActivity(intent);
         }
     }
-//    第二种事件机制
+//    第二种事件机制，在xml中定义OnClick属性
     public void getBack(View source)
         {
             Intent intent = new Intent();
